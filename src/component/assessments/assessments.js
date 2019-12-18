@@ -39,7 +39,7 @@ export default class Assessments extends Component {
         let getAllAssessments = <h1>No Articles</h1>
         if (this.props.assessments.length >= 0) {
           getAllAssessments = this.props.assessments.map((assessment, index) => {
-            return <Assessment key={assessment._id} assessment={assessment} />;
+            return <Assessment key={assessment._id} assessment={assessment} setAssessment={this.props.setAssessment}/>;
             //  deleteArticle={this.deleteArticle}
             //   fun={this.state.fun}
             //   renderForm={this.renderForm}

@@ -12,35 +12,36 @@ import AlertDismissible from './auth/components/AlertDismissible'
 
 //compopnents
 import Assessments from './component/assessments/assessments'
-
+import Questions from './component/questions/questions'
 
 
 class App extends Component {
-  constructor () {
+  constructor() {
     super()
 
     this.state = {
       user: null,
       alerts: [],
-      assessments: []
+      assessments: [],
+      assessment: null
     }
   }
 
-  setAssessments = (assessments)=>{
+  setAssessments = (assessments) => {
     console.log('setAssessments', assessments)
     this.setState({
       assessments: assessments
     })
   }
 
-  setQuestions = (questions)=>{
+  setQuestions = (questions) => {
     console.log('setQuestions', questions)
     this.setState({
       questions: questions
     })
   }
 
-
+setAssessment = async assessment => await this.setState({assessment});
 
   setUser = user => this.setState({ user })
 
@@ -50,7 +51,7 @@ class App extends Component {
     this.setState({ alerts: [...this.state.alerts, { message, type }] })
   }
 
-  render () {
+  render() {
     const { alerts, user } = this.state
     console.log(this.state.assessments)
     return (
@@ -63,8 +64,12 @@ class App extends Component {
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
-          <Assessments assessments={this.state.assessments} setAssessments={this.setAssessments}/>
-
+          <Route exact path='/' render={() => (
+            <Assessments assessments={this.state.assessments} setAssessments={this.setAssessments} setAssessment={this.setAssessment} />
+          )} />
+          <Route exact path='/questions' render={() => (
+            <Questions assessment={this.state.assessment}/>
+          )} />
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
           )} />
