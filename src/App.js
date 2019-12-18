@@ -10,15 +10,37 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
 
+//compopnents
+import Assessments from './component/assessments/assessments'
+
+
+
 class App extends Component {
   constructor () {
     super()
 
     this.state = {
       user: null,
-      alerts: []
+      alerts: [],
+      assessments: []
     }
   }
+
+  setAssessments = (assessments)=>{
+    console.log('setAssessments', assessments)
+    this.setState({
+      assessments: assessments
+    })
+  }
+  
+  setQuestions = (questions)=>{
+    console.log('setQuestions', questions)
+    this.setState({
+      questions: questions
+    })
+  }
+
+
 
   setUser = user => this.setState({ user })
 
@@ -41,6 +63,8 @@ class App extends Component {
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
+          <Assessments assessments={this.state.assessments} setAssessments={this.setAssessments}/>
+
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
           )} />
@@ -50,6 +74,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
+
         </main>
       </React.Fragment>
     )
