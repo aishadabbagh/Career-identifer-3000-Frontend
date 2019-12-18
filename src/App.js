@@ -32,7 +32,7 @@ class App extends Component {
       assessments: assessments
     })
   }
-  
+
   setQuestions = (questions)=>{
     console.log('setQuestions', questions)
     this.setState({
@@ -52,7 +52,7 @@ class App extends Component {
 
   render () {
     const { alerts, user } = this.state
-
+    console.log(this.state.assessments)
     return (
       <React.Fragment>
         <Header user={user} />

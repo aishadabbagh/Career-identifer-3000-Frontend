@@ -24,6 +24,12 @@ export default class Assessments extends Component {
             // console.log('get all assessments: ', response.data.assessments);
             this.props.setAssessments(response.data.assessments)
           })
+          .then((response)=>{
+              this.props.setQuestions(response.data.assessment.question)
+          })
+          .then((response) => {
+              this.setAnswers(response.setAnswers)
+          })
           .catch((error) => {
             console.log(error)
           })

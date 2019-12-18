@@ -16,10 +16,10 @@ export default class Questions extends Component {
       }
     }
     componentDidMount() {
-        getAllQuestions()
+        getAllQuestions(assessmentId)
           .then((response) => {
-            console.log('get all questions: ', response.data.assessment.question);
-            this.props.setArticles(response.data.assessment.question)
+            console.log('get all questions: ', response.data.assessment._id(assessmentId).questions)
+            // this.props.setArticles(response.data.assessment.question)
           })
           .catch((error) => {
             console.log(error)
@@ -86,5 +86,30 @@ export default class Questions extends Component {
     //       }
 //         })
 //       }
+
+    render() {
+        let allQuestions = <h1>No questions</h1>
+        if (this.props.questions.length >= 0) {
+        allArticles = this.props.assessment.question.map((article, index) => {
+            return <Article key={article._id} article={article}
+            deleteArticle={this.deleteArticle}
+            fun={this.state.fun}
+            renderForm={this.renderForm} />
+        })
+        }
+
+        return (
+        <div>
+            {(this.state.form) 
+            ?  <Form article={this.state.article} formArticle={this.formArticle} id={this.state.up_id}/>
+            : allArticles
+            }
+            {console.log(allArticles)}
+            {(this.state.form) ? false : <a href="#" onClick={this.renderForm}>Create</a>}
+
+        </div>
+
+        )
+  }
 
     }

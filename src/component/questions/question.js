@@ -20,7 +20,7 @@ export default class Question extends Component {
                     <h2>{this.props.question.content}</h2>
                 </li>
          
-                {/* <li>{this.props.assessment.questions}</li> */}
+                <li>{this.props.assessment.questions}</li>
             </ul>   
           </div>
       )
