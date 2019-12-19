@@ -2,8 +2,20 @@ import React, { Component } from 'react'
 import { createQuestion, updateQuestionByID, getAllQuestions } from './api'
 import Question from './question'
 // import FORM from './form'
+import { Button } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
+class Questions extends Component {
 
-export default class Questions extends Component {
+
+
+  // showAnswers = e => {
+  //   e.preventDefault();
+  //   const { setQuestions, question, history } = this.props;
+  //   setQuestions(assessment).then(() => {
+  //     history.push('/answers')
+  //   });
+  // }
+
   // constructor(props) {
   //   super()
   //   this.state = {
@@ -15,6 +27,7 @@ export default class Questions extends Component {
   //     up_id: ''
   //   }
   // }
+
   // componentDidMount() {
   //   getAllQuestions(assessmentId)
   //     .then((response) => {
@@ -26,18 +39,18 @@ export default class Questions extends Component {
   //     })
   // }
 
-  //   createArticle = (question) => {
-  //     console.log('Create: ', article)
-  //     createNewArticle(article)
-  //       .then((response) => {
-  //         console.log('get all articles: ', response.data.articles);
+  // createArticle = (question) => {
+  //   console.log('Create: ', article)
+  //   createNewArticle(article)
+  //     .then((response) => {
+  //       console.log('get all articles: ', response.data.articles);
 
-  //         this.props.setArticles([...this.props.articles, article])
-  //       })
-  //       .catch((error) => {
-  //         console.log(error)
-  //       })
-  //   }
+  //       this.props.setArticles([...this.props.articles, article])
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     })
+  // }
 
   //   updateQuestion = (id, question) => {
   //     // console.log('update: ', id)
@@ -104,10 +117,12 @@ export default class Questions extends Component {
     });
 
     return (
-      <ul>
-        {allQuestions}
-      </ul>
-
+      <div>
+        <Button onClick={(e) => { e.preventDefault(); this.props.history.push("/question-form") }}>Create Question</Button>
+        <ul>
+          {allQuestions}
+        </ul>
+      </div>
       // <div>
       //   {(this.state.form)
       //     ? <Form article={this.state.article} formArticle={this.formArticle} id={this.state.up_id} />
@@ -122,3 +137,5 @@ export default class Questions extends Component {
   }
 
 }
+
+export default withRouter(Questions);

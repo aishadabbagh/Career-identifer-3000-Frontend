@@ -4,14 +4,17 @@ import apiUrl from '../../apiConfig';
 
 //Get All Assessment
 export const getAllAssessments = function () {
-    return axios.get(`${apiUrl}/api/assessments`)
-  }
+  return axios.get(`${apiUrl}/api/assessments`)
+}
 
 
 // Create New Assessment
-export const createNewAssessment  = function (Assessment) {
-  console.log("api: ",Assessment)
-  return axios.post(`${apiUrl}/api/assessment` , {Assessment:Assessment})
+export const createNewAssessment = function (assessment) {
+  return axios.post(`${apiUrl}/api/assessment`, {
+    assessment: {
+      title: assessment
+    }
+  })
 }
 
 
@@ -22,7 +25,7 @@ export const deleteAssessmentByID = function (id) {
 
 
 // Show an Assessment
-export const showAssessment  = function (id) {
+export const showAssessment = function (id) {
   // console.log("api: ",Assessment)
   return axios.get(`${apiUrl}/api/assessment${id}`)
 }

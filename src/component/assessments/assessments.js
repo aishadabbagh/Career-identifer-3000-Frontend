@@ -1,64 +1,55 @@
 import React, { Component } from 'react'
-import {getAllAssessments , createNewAssessment, deleteAssessmentByID, showAssessment} from './api'
 import Assessment from './assessment'
 // import FORM from './form'
+import { getAllAssessments, createNewAssessment, deleteAssessmentByID, showAssessment } from './api'
+import { Button } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
 
+class Assessments extends Component {
+  constructor(props) {
+    super(props);
 
-
-export default class Assessments extends Component {
-
-    constructor(props){
-        super()
-        this.state= {
-         assessment:{
-            title: "",
-            questions :[]
-        } 
-        }
+    this.state = {
+      content: ""
     }
+  }
 
-    componentDidMount() {
-        // console.log('qazwsx')
-        getAllAssessments()
-          .then((response) => {
-            // console.log('get all assessments: ', response.data.assessments);
-            this.props.setAssessments(response.data.assessments)
-          })
-          .then((response)=>{
-              this.props.setQuestions(response.data.assessment.question)
-          })
-          .then((response) => {
-              this.setAnswers(response.setAnswers)
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      }
+  componentDidMount() {
+    this.getAssessments();
+  }
 
-      render(){
-        let getAllAssessments = <h1>No Articles</h1>
-        if (this.props.assessments.length >= 0) {
-          getAllAssessments = this.props.assessments.map((assessment, index) => {
-            return <Assessment key={assessment._id} assessment={assessment} setAssessment={this.props.setAssessment}/>;
-            //  deleteArticle={this.deleteArticle}
-            //   fun={this.state.fun}
-            //   renderForm={this.renderForm}
-            //  />
-          })
-        }
-    
-        return (
-            <div>
-              {/* {(this.state.form) 
+  getAssessments = () => {
+    const { setAssessments } = this.props;
+    getAllAssessments()
+      .then(res => {
+        setAssessments(res.data.assessments);
+      })
+  }
+  render() {
+    let getAllAssessments = <h1>No Articles</h1>
+    if (this.props.assessments.length >= 0) {
+      getAllAssessments = this.props.assessments.map((assessment, index) => {
+        return <Assessment key={assessment._id} assessment={assessment} setAssessment={this.props.setAssessment} getAssessments={this.getAssessments} />;
+        //  deleteArticle={this.deleteArticle}
+        //   fun={this.state.fun}
+        //   renderForm={this.renderForm}
+        //  />
+      })
+    }
+    return (
+      <div>
+        <Button onClick={(e) => { e.preventDefault(); this.props.history.push("/assessment-form") }}>Create Assessment</Button>
+        {/* {(this.state.form) 
               ?  <Form article={this.state.article} formArticle={this.formArticle} id={this.state.up_id}/>
                 : allArticles
               }
               {console.log(allArticles)}
               {(this.state.form) ? false : <a href="#" onClick={this.renderForm}>Create</a>} */}
-                
-                {getAllAssessments}
-                
-            </div>
-        )
-    }
+
+        {getAllAssessments}
+
+      </div>
+    )
+  }
 }
+export default withRouter(Assessments);

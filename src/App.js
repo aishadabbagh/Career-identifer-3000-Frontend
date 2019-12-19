@@ -13,11 +13,14 @@ import AlertDismissible from './auth/components/AlertDismissible'
 //compopnents
 import Assessments from './component/assessments/assessments'
 import Questions from './component/questions/questions'
-
-
+import AssessmentForm from './component/assessments/AssessmentForm'
+import QuestionForm from './component/questions/QuestionForm'
+import QuestionUpdate from './component/questions/QuestionUpdate'
+import QuestionShow from './component/questions/QuestionShow'
+import AnswerForm from './component/answers/answerForm'
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       user: null,
@@ -27,21 +30,22 @@ class App extends Component {
     }
   }
 
+
+
+
   setAssessments = (assessments) => {
     console.log('setAssessments', assessments)
     this.setState({
       assessments: assessments
     })
   }
+  // createAssessment = (assessment) => {
+  //   createNewAssessment(assessment)
+  //     .then()
+  //     .catch()
+  // }
 
-  setQuestions = (questions) => {
-    console.log('setQuestions', questions)
-    this.setState({
-      questions: questions
-    })
-  }
-
-setAssessment = async assessment => await this.setState({assessment});
+  setAssessment = async assessment => await this.setState({ assessment });
 
   setUser = user => this.setState({ user })
 
@@ -64,11 +68,32 @@ setAssessment = async assessment => await this.setState({assessment});
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
-          <Route exact path='/' render={() => (
-            <Assessments assessments={this.state.assessments} setAssessments={this.setAssessments} setAssessment={this.setAssessment} />
+          <Route exact path='/assessments' render={() => (
+            <Assessments
+              assessments={this.state.assessments}
+              setAssessments={this.setAssessments}
+              setAssessment={this.setAssessment}
+              createAssessment={this.createAssessment} />
           )} />
           <Route exact path='/questions' render={() => (
-            <Questions assessment={this.state.assessment}/>
+            <Questions assessment={this.state.assessment} />
+          )} />
+
+          <Route exact path='/assessment-form' render={() => (
+            <AssessmentForm />
+          )} />
+
+          <Route path='/update-question' render={() => (
+            <QuestionUpdate />
+          )} />
+          <Route path='/question-form' render={() => (
+            <QuestionForm assessment={this.state.assessment}/>
+          )} />
+          <Route path='/question-show/:id' render={() => (
+            <QuestionShow assessment={this.state.assessment} />
+          )} />
+          <Route path='/answer-form/:id' render={() => (
+            <AnswerForm  {...this.props} />
           )} />
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
