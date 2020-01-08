@@ -1,0 +1,51 @@
+body {
+    background-color: black;
+}
+
+
+.one-assest {
+    background-color: black;
+}
+
+.crd {
+    background-color: rgb(54, 54, 54) !important;
+    /* display: block; */
+    align-items: center;
+    /* flex-direction: column; */
+    flex: auto;
+}
+
+p {
+    color: white;
+}
+
+li {
+    color: white;
+    list-style: none;
+}
+
+.my-row {
+    margin: 1rem 0;
+}
+
+.card-content{
+    display:block;
+   /* background-color: greenyellow; */
+   align-items:center ;
+   text-align: center;
+}
+
+.answer{
+    list-style: none;
+    align-items:center ;
+    text-align: center;
+    flex: auto;
+    background-color: rgb(158, 157, 157);
+    color: white;
+   margin-block: 100%;
+   margin-top: 0.5rem;
+}
+
+.k{
+    background-color: rgb(95, 95, 95) !important;
+}

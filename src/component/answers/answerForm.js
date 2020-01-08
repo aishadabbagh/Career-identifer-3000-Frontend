@@ -33,9 +33,11 @@ class AnswerForm extends Component {
 
     render() {
         return (
+
+           <div> 
             <Form onSubmit={this.onSubmit}>
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Add Answer</Form.Label>
+                    <Form.Label className="meh">Add Answer</Form.Label>
                     <Form.Control name="content" type="string" placeholder="Enter content"
                         value={this.state.content} onChange={(e) => this.handleOnChange(e)} />
 
@@ -52,6 +54,7 @@ class AnswerForm extends Component {
                     Submit
   </Button>
             </Form>
+            </div>
         )
     }
 }

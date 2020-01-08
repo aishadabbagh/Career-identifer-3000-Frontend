@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { createQuestion, updateQuestionByID, getAllQuestions } from './api'
 import Question from './question'
 // import FORM from './form'
+import '../assessments/assessments.css'
 import { Button } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 class Questions extends Component {
@@ -118,10 +119,12 @@ class Questions extends Component {
 
     return (
       <div>
-        <Button onClick={(e) => { e.preventDefault(); this.props.history.push("/question-form") }}>Create Question</Button>
+        <Button className="my-5" onClick={(e) => { e.preventDefault(); this.props.history.push("/question-form") }}>Create Question</Button>
+        <div className="row">
         <ul>
           {allQuestions}
         </ul>
+        </div>
       </div>
       // <div>
       //   {(this.state.form)

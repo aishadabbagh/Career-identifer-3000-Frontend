@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import { createNewAssessment } from './api'
 import { withRouter } from 'react-router-dom'
+import './assessments.css'
+
 class AssessmentForm extends Component {
 	constructor(props) {
 		super(props);
@@ -35,7 +37,7 @@ class AssessmentForm extends Component {
 		return (
 			<Form onSubmit={this.onSubmit}>
 				<Form.Group controlId="formBasicEmail">
-					<Form.Label>Assessment Title</Form.Label>
+					<Form.Label className="meh">Assessment Title</Form.Label>
 					<Form.Control name="title" type="string" placeholder="Enter Assessment name"
 					value= {this.state.title} onChange={(e)=> this.handleOnChange(e)} />
 

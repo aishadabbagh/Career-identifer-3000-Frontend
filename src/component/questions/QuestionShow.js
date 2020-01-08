@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom'
 import { deleteAnswerByID } from '../answers/api';
 // import {deleteAnswerByID} from '../answers/answers'
+import '../assessments/assessments.css';
 
 class QuestionShow extends Component {
     constructor(props) {
@@ -40,18 +41,28 @@ class QuestionShow extends Component {
     render() {
         const { question } = this.state;
         let answers = question ? question.answers.map(answer => {
-            return <li key={answer._id}>{answer.content}
-                <Button variant="danger" onClick={e => this.deleteAnswer(e, answer._id, question._id)} >Delete</Button></li>
+            return <li className="card k" key={answer._id}>
+            <div className="card answer" >
+                {answer.content}
+            </div>   
+                <Button  className="my-5" variant="danger" onClick={e => this.deleteAnswer(e, answer._id, question._id)} >Delete</Button></li>
         }) : null;
 
         return (
 
             <div>
-                <Button onClick={(e) => { e.preventDefault(); this.props.history.push(`/answer-form/${question && question._id}`) }}>Add Answer</Button>
+                <Button  className="my-5" onClick={(e) => { e.preventDefault(); this.props.history.push(`/answer-form/${question && question._id}`) }}>Add Answer</Button>
+               
+               <div className="card">
+                <div className="card-body crd">
+                    <div className="card-text">
                 <h1>{question && question.content}</h1>
-                <ul>
+                </div>
+                <div className="card-text">
                     {answers}
-                </ul>
+                </div>
+                </div>
+            </div>
             </div>
         )
     }

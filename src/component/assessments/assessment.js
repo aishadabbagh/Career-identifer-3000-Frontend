@@ -31,17 +31,16 @@ class Assessment extends Component {
     return (
 
       //   {console.log("assessment", this.props.assessment)}
-      <div>
-        <ul>
-          <li>
-            <h1>{this.props.assessment.title}</ h1>
-            <Button onClick={(e) => this.showQuestions(e)}>questions</ Button>
-            <Button variant="danger" onClick={(e) => this.deleteAssessment(e)}> Delete</Button>
-          </li>
-
-          {/* <li>{this.props.assessment.questions}</li> */}
-        </ul>
+      <React.Fragment>
+      <div className="card">
+        <div className="card-body crd">
+          <h1 className="card-title">{this.props.assessment.title}</ h1>
+            <Button className="btn btn-primary" onClick={(e) => this.showQuestions(e)}>questions</ Button>
+            <Button className="btn btn-primary" variant="danger" onClick={(e) => this.deleteAssessment(e)}> Delete</Button>
+        </div>
       </div>
+      <div>
+      </div></React.Fragment>
     )
   }
 }

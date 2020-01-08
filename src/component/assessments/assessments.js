@@ -4,6 +4,7 @@ import Assessment from './assessment'
 import { getAllAssessments, createNewAssessment, deleteAssessmentByID, showAssessment } from './api'
 import { Button } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
+import './assessments.css'
 
 class Assessments extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class Assessments extends Component {
     }
     return (
       <div>
-        <Button onClick={(e) => { e.preventDefault(); this.props.history.push("/assessment-form") }}>Create Assessment</Button>
+        <Button className="my-5" onClick={(e) => { e.preventDefault(); this.props.history.push("/assessment-form") }}>Create Assessment</Button>
         {/* {(this.state.form) 
               ?  <Form article={this.state.article} formArticle={this.formArticle} id={this.state.up_id}/>
                 : allArticles

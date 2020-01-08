@@ -6,11 +6,17 @@ $charcoal: #bbb;
   display: flex;
   height: 100px;
   padding: 0 20px;
+  background-color: black;
 
   a,
   span {
     font-size: 1.2em;
     margin: 0 15px;
+    color: #ff7507;
+  }
+
+  a:hover {
+    color: white;
   }
 }
 

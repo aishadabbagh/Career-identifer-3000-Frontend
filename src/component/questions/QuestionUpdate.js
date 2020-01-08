@@ -40,7 +40,7 @@ class QuestionUpdate extends Component {
 
 			<Form onSubmit={this.onSubmit}>
 				<Form.Group controlId="formBasicEmail">
-					<Form.Label>Question Title</Form.Label>
+					<Form.Label className="meh" >Question Title</Form.Label>
 					<Form.Control name="content" type="string" placeholder="Enter question"
 						value={this.state.content} onChange={(e) => this.handleOnChange(e)} />
 

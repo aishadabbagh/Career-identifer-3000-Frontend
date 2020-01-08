@@ -18,6 +18,7 @@ import QuestionForm from './component/questions/QuestionForm'
 import QuestionUpdate from './component/questions/QuestionUpdate'
 import QuestionShow from './component/questions/QuestionShow'
 import AnswerForm from './component/answers/answerForm'
+import Home from "./Home"
 class App extends Component {
   constructor(props) {
     super(props)
@@ -65,6 +66,8 @@ class App extends Component {
           <AlertDismissible key={index} variant={alert.type} message={alert.message} />
         ))}
         <main className="container">
+          <Route exact path="./" component={Home}/>
+
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
@@ -78,6 +81,10 @@ class App extends Component {
           <Route exact path='/questions' render={() => (
             <Questions assessment={this.state.assessment} />
           )} />
+         <Route exact path='/' render={() => (
+            <Home />
+          )} />
+
 
           <Route exact path='/assessment-form' render={() => (
             <AssessmentForm />
