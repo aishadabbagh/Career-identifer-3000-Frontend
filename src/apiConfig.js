@@ -1,7 +1,7 @@
 let apiUrl
 const expressPort = 3004
 const apiUrls = {
-  production: 'https://evening-caverns-94220.herokuapp.com',
+  production: 'https://still-depths-47986.herokuapp.com/',
   development: `http://localhost:${expressPort}`
 }
 
